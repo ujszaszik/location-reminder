@@ -7,7 +7,8 @@ ext {
 
     //GOOGLE
     version_gms = "4.3.4"
-    version_gms_play_services = "17.0.0"
+    version_gms_play_services_location = "17.1.0"
+    version_gms_play_services_maps = "17.0.0"
     version_firebase = "5.0.0"
 
     //ANDROID

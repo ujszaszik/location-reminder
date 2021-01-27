@@ -45,3 +45,8 @@ fun GoogleMap.setTypeAndResetTheme(typeId: Int) {
     mapType = typeId
     setMapStyle(null)
 }
+
+fun GoogleMap.enableZoom() {
+    uiSettings.isZoomControlsEnabled = true
+    uiSettings.isZoomGesturesEnabled = true
+}

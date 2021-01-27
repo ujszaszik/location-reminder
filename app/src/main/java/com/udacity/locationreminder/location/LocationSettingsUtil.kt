@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.SettingsClient
+import com.udacity.locationreminder.R
+import com.udacity.locationreminder.util.showToastMessage
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -26,7 +28,7 @@ class LocationSettingsUtil(private val activity: Activity) : KoinComponent {
     fun checkLocationSettings(resolve: Boolean = true) {
         settingsClient.checkLocationSettings(requestBuilder.build()).apply {
             addOnFailureListener { exception -> doOnFailure(resolve, exception) }
-            addOnSuccessListener { doOnSuccess() }
+            addOnCompleteListener { if (it.isSuccessful) doOnSuccess() }
         }
     }
 
@@ -35,10 +37,10 @@ class LocationSettingsUtil(private val activity: Activity) : KoinComponent {
             try {
                 startTurnOnLocationScreen(exception)
             } catch (sendEx: IntentSender.SendIntentException) {
-                _isGranted.postValue(false)
+                sendEx.printStackTrace()
             }
         } else {
-            _isGranted.postValue(false)
+            showToastMessage(activity, R.string.geofence_location_must_be_enabled)
         }
     }
 

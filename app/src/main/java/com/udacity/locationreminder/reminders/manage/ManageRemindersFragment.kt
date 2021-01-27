@@ -109,12 +109,8 @@ class ManageRemindersFragment : Fragment() {
     }
 
     private fun observeIfLocationAccessGranted() {
-        locationSettingsUtil.isGranted.observeNotNull(this) {
-            if (it) navigateToLocationSelection()
-            else showSnackbarMessage(
-                requireActivity(),
-                R.string.please_provide_location
-            )
+        locationSettingsUtil.isGranted.observeIfTrue(this) {
+            navigateToLocationSelection()
             locationSettingsUtil.resetIfGranted()
         }
     }

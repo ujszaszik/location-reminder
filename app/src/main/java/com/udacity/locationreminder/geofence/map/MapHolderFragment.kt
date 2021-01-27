@@ -2,10 +2,7 @@ package com.udacity.locationreminder.geofence.map
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.MapsInitializer
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.*
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 
@@ -21,6 +18,7 @@ abstract class MapHolderFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         MapsInitializer.initialize(activity)
+        googleMap.enableZoom()
         mapManager = get { parametersOf(googleMap) }
         onMapReadyCallback()
     }

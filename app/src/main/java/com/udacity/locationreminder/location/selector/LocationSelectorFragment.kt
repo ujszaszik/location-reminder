@@ -1,13 +1,15 @@
 package com.udacity.locationreminder.location.selector
 
 import android.annotation.SuppressLint
-import android.location.Location
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.udacity.locationreminder.R
 import com.udacity.locationreminder.databinding.FragmentLocationSelectorBinding
 import com.udacity.locationreminder.geofence.GeofenceData
@@ -20,6 +22,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.parameter.parametersOf
+
 
 @KoinApiExtension
 class LocationSelectorFragment : MapHolderFragment() {
@@ -106,10 +109,20 @@ class LocationSelectorFragment : MapHolderFragment() {
 
     @SuppressLint("MissingPermission")
     private fun showCurrentLocation() {
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                location?.let { mapManager.jumpToCurrentLocation(it) }
+        val locationRequest = LocationRequest.create().apply {
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY;
+            interval = 20 * 1000
+        }
+
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                locationResult.lastLocation?.let {
+                    mapManager.jumpToCurrentLocation(it)
+                    fusedLocationClient.removeLocationUpdates(this)
+                }
             }
+        }
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
     }
 
     private fun initializeMarkerCallbacks() {

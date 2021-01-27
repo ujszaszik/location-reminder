@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.udacity.locationreminder.databinding.FragmentLoginBinding
+import com.udacity.locationreminder.util.observeNotNull
 
 class LoginFragment : Fragment() {
 
@@ -30,12 +30,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeUserState() {
-        viewModel.currentUser.observe(viewLifecycleOwner, Observer { user ->
-            user?.let { navigateToReminderList(it.currentUserName()) }
-        })
+        viewModel.currentUser.observeNotNull(this) { navigateToReminderList() }
     }
 
-    private fun navigateToReminderList(username: String) {
+    private fun navigateToReminderList() {
         LoginFragmentDirections.actionLoginFragmentToReminderListFragment().run {
             findNavController().navigate(this)
         }

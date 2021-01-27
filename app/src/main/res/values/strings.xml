@@ -33,6 +33,7 @@
     <string name="geofence_remove_failed">&geofence; &removal; &errorMessage;</string>
     <string name="geofence_update_successful">&geofence; &update; &successMessage;</string>
     <string name="geofence_update_failed">&geofence; &update; &errorMessage;</string>
+    <string name="geofence_location_must_be_enabled">Location must be enabled to access map!</string>
 
     <!--    GEOFENCE ERROR MESSAGES-->
     <string name="geofence_error_not_available">&errorMessage; Geofence not available!</string>

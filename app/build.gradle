@@ -82,8 +82,8 @@ dependencies {
 
 
     // GMS
-    implementation "com.google.android.gms:play-services-location:$version_gms_play_services"
-    implementation "com.google.android.gms:play-services-maps:$version_gms_play_services"
+    implementation "com.google.android.gms:play-services-location:$version_gms_play_services_location"
+    implementation "com.google.android.gms:play-services-maps:$version_gms_play_services_maps"
 
 
     // Koin
