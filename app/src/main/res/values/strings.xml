@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE
+    resources [
+    <!ENTITY errorMessage "Error: ">
+    <!ENTITY geofence "Geofence">
+    <!ENTITY creation "creation">
+    <!ENTITY removal "removal">
+    <!ENTITY update "update">
+    <!ENTITY successMessage "is successful!">
+    <!ENTITY failedMessage "has failed!">
+    ]>
+
+<resources>
+
+    <!--    DEFAULT-->
+    <string name="app_name">Location Reminder</string>
+    <string name="no_data">No data</string>
+    <string name="radius_in_meters">%d metres</string>
+
+    <string name="all_fields_are_mandatory">All fields are mandatory!</string>
+
+    <!--    BROADCAST INTENT EXTRAS-->
+    <string name="broadcast_reminder_name_extra">ReminderName</string>
+    <string name="broadcast_reminder_request_id_extra">requestId</string>
+
+    <!--    GEOFENCE GENERAL -->
+    <string name="geofence_event_intent_action">com.udacity.locationreminder.geofence.action.ACTION_GEOFENCE_EVENT</string>
+
+    <!--    GEOFENCE MANAGEMENT MESSAGES-->
+    <string name="geofence_create_successful">&geofence; &creation; &successMessage;</string>
+    <string name="geofence_create_failed">&geofence; &creation; &failedMessage;</string>
+    <string name="geofence_remove_successful">&geofence; &removal; &successMessage;</string>
+    <string name="geofence_remove_failed">&geofence; &removal; &errorMessage;</string>
+    <string name="geofence_update_successful">&geofence; &update; &successMessage;</string>
+    <string name="geofence_update_failed">&geofence; &update; &errorMessage;</string>
+
+    <!--    GEOFENCE ERROR MESSAGES-->
+    <string name="geofence_error_not_available">&errorMessage; Geofence not available!</string>
+    <string name="geofence_error_too_many_geofences">&errorMessage; Too many geofences!</string>
+    <string name="geofence_error_too_many_intents">&errorMessage;Too many pending intents!</string>
+    <string name="geofence_error_unknown_error">&errorMessage; Unknown geofence error!</string>
+
+    <!-- NOTIFICATION -->
+    <string name="notification_id">1</string>
+    <string name="notification_content_title">Location Reminder</string>
+    <string name="notification_content_message">You are close to %s! Check your reminder!</string>
+    <string name="notification_action_label">Show the Details</string>
+    <string name="notification_channel_id">Location Reminder Channel</string>
+    <string name="notification_channel_name">Location Reminder Notification Channel</string>
+    <string name="notification_channel_description">Default Notification Channel for Location Reminder</string>
+    <string name="please_provide_location">Please provide location!</string>
+
+    <!--    REMINDER VIEWS-->
+    <string name="reminder_details_title">Title</string>
+    <string name="reminder_details_description">Description</string>
+    <string name="reminder_details_location">Location</string>
+    <string name="reminder_details_radius">Radius</string>
+    <string name="reminder_details_last_modified">Last modified</string>
+    <string name="reminder_management_title">TITLE</string>
+    <string name="reminder_management_description">DESCRIPTION</string>
+
+    <!--    LABELS-->
+    <string name="click_to_select_location">Click on the icon to select a location!</string>
+    <string name="login_text">LOGIN</string>
+    <string name="location_footer_min_value">   0</string>
+    <string name="location_footer_max_value">1000</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="button_save">SAVE</string>
+    <string name="legend_current_selection">Current Selection</string>
+    <string name="legend_saved_locations">Saved Locations</string>
+    <string name="label_logout">LOGOUT</string>
+
+    <!--    MAP-->
+    <string name="title_activity_maps">Map</string>
+    <string name="map_type_default_view">Default View</string>
+    <string name="map_type_hybrid_view">Hybrid View</string>
+    <string name="map_type_satellite_view">Satellite View</string>
+    <string name="map_type_terrain_view">Terrain View</string>
+    <string name="map_type_silver_theme">Silver Theme</string>
+    <string name="map_type_retro_theme">Retro Theme</string>
+    <string name="map_type_dark_theme">Dark Theme</string>
+    <string name="map_type_night_theme">Night Theme</string>
+    <string name="map_type_aubergine_theme">Aubergine Theme</string>
+    <string name="map_type_blue_bird_theme">Blue Bird Theme</string>
+</resources>

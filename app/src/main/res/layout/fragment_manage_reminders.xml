@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.udacity.locationreminder.reminders.RemindersSharedViewModel" />
+
+        <variable
+            name="reminder"
+            type="com.udacity.locationreminder.database.entity.ReminderEntity" />
+
+        <variable
+            name="type"
+            type="com.udacity.locationreminder.reminders.ReminderType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".reminders.manage.ManageRemindersFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reminderTitleLayout"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:hint="@string/reminder_management_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@dimen/bias_half"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/reminderTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={reminder.title}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reminderDescriptionLayout"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/description_text_view_height"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:hint="@string/reminder_management_description"
+            app:layout_constraintBottom_toTopOf="@+id/locationImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@dimen/bias_half"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderTitleLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/reminderDescriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/description_text_view_height"
+                android:text="@={reminder.description}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/locationImage"
+            android:layout_width="@dimen/location_icon_size"
+            android:layout_height="@dimen/location_icon_size"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:onClick="@{() -> viewModel.onMapRequest()}"
+            app:layout_constraintEnd_toStartOf="@id/locationText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reminderDescriptionLayout"
+            app:srcCompat="@drawable/ic_location_grey" />
+
+        <TextView
+            android:id="@+id/locationText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@={reminder.locationName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/locationImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locationImage"
+            app:layout_constraintTop_toTopOf="@+id/locationImage" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="@dimen/default_margin"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/abc_vector_test"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/saveReminderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/default_margin"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="@{() -> viewModel.saveReminder(reminder, type)}"
+            android:src="@drawable/ic_save_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@android:color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

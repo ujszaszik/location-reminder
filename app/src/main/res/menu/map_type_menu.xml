@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/mapTypeGroup">
+        <item
+            android:id="@+id/defaultMapType"
+            android:title="@string/map_type_default_view" />
+
+        <item
+            android:id="@+id/hybridMapType"
+            android:title="@string/map_type_hybrid_view" />
+
+        <item
+            android:id="@+id/satelliteMapType"
+            android:title="@string/map_type_satellite_view" />
+
+        <item
+            android:id="@+id/terrainMapType"
+            android:title="@string/map_type_terrain_view" />
+    </group>
+
+    <group android:id="@+id/mapThemeGroup">
+        <item
+            android:id="@+id/silverMapType"
+            android:title="@string/map_type_silver_theme" />
+
+        <item
+            android:id="@+id/retroMapType"
+            android:title="@string/map_type_retro_theme" />
+
+        <item
+            android:id="@+id/darkMapType"
+            android:title="@string/map_type_dark_theme" />
+
+        <item
+            android:id="@+id/nightMapType"
+            android:title="@string/map_type_night_theme" />
+
+        <item
+            android:id="@+id/aubergineMapType"
+            android:title="@string/map_type_aubergine_theme" />
+
+        <item
+            android:id="@+id/blueBirdMapType"
+            android:title="@string/map_type_blue_bird_theme" />
+    </group>
+</menu>

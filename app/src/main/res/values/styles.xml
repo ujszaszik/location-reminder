@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- APPLICATION THEME -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_500</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <!-- TEXT VIEW -->
+    <style name="DetailLabelTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailValueTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:inputType">textMultiLine</item>
+    </style>
+</resources>

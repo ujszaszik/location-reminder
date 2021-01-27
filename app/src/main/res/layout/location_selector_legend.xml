@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foregroundGravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/redSquareImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/micro_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintEnd_toStartOf="@+id/currentSelectionTextView"
+        app:layout_constraintHorizontal_bias="@dimen/bias_half"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_small_square_red" />
+
+    <TextView
+        android:id="@+id/currentSelectionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/micro_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/legend_current_selection"
+        app:layout_constraintBottom_toBottomOf="@+id/redSquareImageView"
+        app:layout_constraintEnd_toStartOf="@+id/greenSquareImageView"
+        app:layout_constraintHorizontal_bias="@dimen/bias_half"
+        app:layout_constraintStart_toEndOf="@+id/redSquareImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/greenSquareImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/tiny_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/currentSelectionTextView"
+        app:layout_constraintEnd_toStartOf="@+id/savedLocationsTextView"
+        app:layout_constraintHorizontal_bias="@dimen/bias_half"
+        app:layout_constraintStart_toEndOf="@+id/currentSelectionTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_small_square_green" />
+
+    <TextView
+        android:id="@+id/savedLocationsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/micro_margin"
+        android:layout_marginTop="@dimen/tiny_margin"
+        android:text="@string/legend_saved_locations"
+        app:layout_constraintBottom_toBottomOf="@+id/currentSelectionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@dimen/bias_half"
+        app:layout_constraintStart_toEndOf="@+id/greenSquareImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

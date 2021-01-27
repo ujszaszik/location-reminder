@@ -1,0 +1,158 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.udacity.locationreminder"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += ['-Xopt-in=kotlin.RequiresOptIn']
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+        animationsDisabled = true
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/ASM'
+        exclude 'META-INF/licenses/ASM'
+        exclude "**/attach_hotspot_windows.dll"
+        exclude("META-INF/*.kotlin_module")
+    }
+}
+
+dependencies {
+
+    // Android
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"
+    implementation "androidx.core:core-ktx:$version_core_ktx"
+    implementation "androidx.appcompat:appcompat:$version_app_compat"
+    implementation "com.google.android.material:material:$version_material"
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+    implementation "androidx.legacy:legacy-support-v4:$version_legacy_support"
+
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+    androidTestImplementation "androidx.navigation:navigation-testing:$version_navigation"
+
+
+    // Firebase
+    implementation "com.firebaseui:firebase-ui-auth:$version_firebase"
+
+
+    // GMS
+    implementation "com.google.android.gms:play-services-location:$version_gms_play_services"
+    implementation "com.google.android.gms:play-services-maps:$version_gms_play_services"
+
+
+    // Koin
+    implementation "org.koin:koin-core:$version_koin"
+    implementation "org.koin:koin-android:$version_koin"
+    implementation "org.koin:koin-androidx-scope:$version_koin"
+    implementation "org.koin:koin-androidx-viewmodel:$version_koin"
+    implementation "org.koin:koin-androidx-fragment:$version_koin"
+    implementation "org.koin:koin-androidx-ext:$version_koin"
+
+    testImplementation "org.koin:koin-test:$version_koin"
+    testImplementation "org.koin:koin-androidx-viewmodel:$version_koin"
+
+    androidTestImplementation "org.koin:koin-test:$version_koin"
+    androidTestImplementation "org.koin:koin-androidx-viewmodel:$version_koin"
+
+
+    // Room
+    implementation "androidx.room:room-ktx:$version_room"
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+
+    // ThreeTen Android Backport (Local Date Time below API Level 26)
+    implementation "com.jakewharton.threetenabp:threetenabp:$version_three_ten"
+    testImplementation "org.threeten:threetenbp:$version_three_ten_test"
+
+
+    // TEST Core
+    implementation "androidx.test:core:$version_x_core_test"
+    testImplementation "androidx.arch.core:core-testing:$version_core_test"
+    androidTestImplementation "androidx.arch.core:core-testing:$version_core_test"
+    debugImplementation("androidx.test:core:$version_core_test_debug")
+
+
+    // TEST JUnit
+    testImplementation "junit:junit:$version_junit_test"
+    androidTestImplementation "androidx.test.ext:junit:$version_junit_android_test"
+
+
+    // TEST Espresso
+    implementation "androidx.test.espresso:espresso-idling-resource:$version_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$version_espresso_contrib") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'appcompat-v7'
+    }
+
+
+    // TEST Mock
+    testImplementation "io.mockk:mockk:$version_mockk"
+    testImplementation "org.mockito:mockito-core:$version_mockito"
+    androidTestImplementation "org.mockito:mockito-core:$version_mockito"
+    androidTestImplementation "net.bytebuddy:byte-buddy:$version_byte_buddy"
+    androidTestImplementation "org.objenesis:objenesis:$version_objenesis"
+
+
+    // TEST Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_test_coroutines"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_test_coroutines"
+
+
+    // TEST Fragments
+    debugImplementation("androidx.fragment:fragment-testing:$version_test_fragments_debug")
+
+
+    // TEST LiveData
+    testImplementation "com.jraska.livedata:testing-ktx:$version_test_livedata"
+    androidTestImplementation "com.jraska.livedata:testing-ktx:$version_test_livedata"
+
+}

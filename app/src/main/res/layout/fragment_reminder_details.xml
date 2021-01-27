@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="reminder"
+            type="com.udacity.locationreminder.database.entity.ReminderEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".reminders.detail.DetailsFragment">
+
+        <TextView
+            android:id="@+id/ttileLabelTextView"
+            style="@style/DetailLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/reminder_details_title"
+            app:layout_constraintBaseline_toBaselineOf="@+id/titleValueTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/titleValueTextView"
+            style="@style/DetailValueTextView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@{reminder.title}"
+            app:layout_constraintBottom_toTopOf="@id/descriptionValueTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailTextGuideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionLabelTextView"
+            style="@style/DetailLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reminder_details_description"
+            app:layout_constraintBaseline_toBaselineOf="@+id/descriptionValueTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionValueTextView"
+            style="@style/DetailValueTextView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:text="@{reminder.description}"
+            app:layout_constraintBottom_toTopOf="@id/locationValueTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailTextGuideline"
+            app:layout_constraintTop_toBottomOf="@id/titleValueTextView" />
+
+        <TextView
+            android:id="@+id/locationLabelTextView"
+            style="@style/DetailLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reminder_details_location"
+            app:layout_constraintBaseline_toBaselineOf="@+id/locationValueTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/locationValueTextView"
+            style="@style/DetailValueTextView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:text="@{reminder.locationName}"
+            app:layout_constraintBottom_toTopOf="@id/radiusValueTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/detailTextGuideline"
+            app:layout_constraintTop_toBottomOf="@id/descriptionValueTextView" />
+
+        <TextView
+            android:id="@+id/radiusLabelTextView"
+            style="@style/DetailLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reminder_details_radius"
+            app:layout_constraintBaseline_toBaselineOf="@+id/radiusValueTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/radiusValueTextView"
+            style="@style/DetailValueTextView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailTextGuideline"
+            app:layout_constraintTop_toBottomOf="@id/locationValueTextView"
+            app:locationRadius="@{reminder.radius}" />
+
+        <TextView
+            android:id="@+id/lastModifiedLabelTextView"
+            style="@style/DetailLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reminder_details_last_modified"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lastModifiedValueTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/lastModifiedValueTextView"
+            style="@style/DetailValueTextView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            app:lastModified="@{reminder.modificationDate}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailTextGuideline"
+            app:layout_constraintTop_toBottomOf="@id/radiusValueTextView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/detailTextGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/default_guideline_pct" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="@dimen/default_margin"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@android:color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
