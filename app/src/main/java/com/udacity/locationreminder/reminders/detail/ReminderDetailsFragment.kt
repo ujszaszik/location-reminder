@@ -1,17 +1,21 @@
 package com.udacity.locationreminder.reminders.detail
 
+import android.app.NotificationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.udacity.locationreminder.R
 import com.udacity.locationreminder.databinding.FragmentReminderDetailsBinding
 import com.udacity.locationreminder.reminders.RemindersSharedViewModel
 import com.udacity.locationreminder.util.observeNotNull
 import com.udacity.locationreminder.util.wrapEspressoIdlingResource
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.parameter.parametersOf
@@ -30,6 +34,7 @@ class ReminderDetailsFragment : Fragment() {
         binding = FragmentReminderDetailsBinding.inflate(inflater)
 
         loadReminderByRequestId()
+        hideNotification()
         observeReminderToShow()
         setOnBackButtonPressedListener()
 
@@ -48,9 +53,16 @@ class ReminderDetailsFragment : Fragment() {
 
     private fun setOnBackButtonPressedListener() {
         binding.backButton.setOnClickListener {
-            ReminderDetailsFragmentDirections.actionReminderDetailsFragmentToReminderListFragment()
-                .run { findNavController().navigate(this) }
+            findNavController().navigate(
+                ReminderDetailsFragmentDirections.actionReminderDetailsFragmentToReminderListFragment(),
+                NavOptions.Builder().setLaunchSingleTop(true).build()
+            )
         }
+    }
+
+    private fun hideNotification() {
+        val notificationManager: NotificationManager by inject()
+        notificationManager.cancel(requireActivity().getString(R.string.notification_id).toInt())
     }
 
     @VisibleForTesting

@@ -11,15 +11,18 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import com.udacity.locationreminder.R
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class ReminderNotificator(private val context: Context) {
+@KoinApiExtension
+class ReminderNotificator(private val context: Context) : KoinComponent {
 
     private val channelInfo = ChannelInfo.fromResources(context)
 
     fun sendNotification(reminderId: String, locationName: String) {
         val builder = getNotificationBuilder(reminderId, locationName)
-        val notificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager: NotificationManager by inject()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager, builder)
         }
@@ -35,6 +38,7 @@ class ReminderNotificator(private val context: Context) {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(context.getString(R.string.notification_content_title))
             .setContentText(context.getString(R.string.notification_content_message, locationName))
+            .setAutoCancel(true)
             .apply { addActionToOpenDetails(reminderId) }
     }
 
